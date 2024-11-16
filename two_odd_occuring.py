@@ -1,27 +1,29 @@
 def print2odd(arr, size):
-    xorf2 = arr[0]
-    x=0
-    y=0
-    set_bit = 0
-
-    for i in range(1, size):
-        xorf2 = xorf2 ^ arr[i]
+    xorf2 = 0
+    for i in range(size):
+        xorf2 ^= arr[i]
 
     set_bit = xorf2 & ~(xorf2 - 1)
 
+    x = 0
+    y = 0
     for i in range(size):
-        if(arr[i] & set_bit):
-            x = x ^ arr[i]
+        if arr[i] & set_bit:
+            x ^= arr[i]
         else:
-            y = y ^ arr[i]
+            y ^= arr[i]
 
-    print('the 2 odd elements are', x, '&', y)
+    print('The two odd elements are', x, 'and', y)
+
 
 arr = []
 
-arr_size = int(input('enter size of the array : '))
-for i in range(0, arr_size):
-    z = int(input('enter element : '))
+arr_size = int(input('Enter size of the array: '))
+for i in range(arr_size):
+    z = int(input(f'Enter element {i + 1}: '))
     arr.append(z)
 
-print2odd(arr, arr_size)
+if arr_size < 2:
+    print("Array must contain at least 2 elements.")
+else:
+    print2odd(arr, arr_size)

@@ -1,18 +1,21 @@
 def odd_occuring(arr):
+    """
+    Finds the number that occurs an odd number of times in the array.
+    Assumes that exactly one number occurs an odd number of times.
+    """
     res = 0
-
     for element in arr:
-        res = res ^ element
-
+        res ^= element  
     return res
+
 
 arr = []
 
-n = int(input('Enter array size : '))
+n = int(input('Enter array size: '))
+print('Enter the array elements:')
 
-while(n):
-    num = int(input('enter number : '))
+for _ in range(n):
+    num = int(input('Enter number: '))
     arr.append(num)
-    n -= 1
 
-print('\n Odd occuring number is: ', odd_occuring(arr))
+print('\nOdd occurring number is:', odd_occuring(arr))
